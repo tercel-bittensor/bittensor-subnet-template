@@ -2,8 +2,8 @@
 
 This tutorial will guide you through:
 
-- Setting up a local blockchain that is not connected to either Bittensor testchain or mainchain
-- Creating a subnet
+- Deploying a local instance of the Bittensor blockchain, separate from either testnet or mainnet, i.e. `finney`.
+- Creating a subnet.
 - Run your incentive mechanism on the subnet.
 
 ## Local blockchain vs local subtensor node 
@@ -79,7 +79,7 @@ These steps initialize your local subtensor chain in development mode. These com
 Build the binary with the faucet feature enabled:
 
 ```bash
-cargo build -p node-subtensor --profile production --features pow-faucet
+cargo build -p node-subtensor --profile release --features pow-faucet
 ```
 
 **NOTE**: The `--features pow-faucet` option in the above is required if we want to use the command `btcli wallet faucet` [See the below Mint tokens step](#8-mint-tokens-from-faucet).
