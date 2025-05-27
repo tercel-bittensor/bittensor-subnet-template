@@ -17,6 +17,10 @@ wallet_name = os.environ.get('TEST_WALLET_NAME', 'owner')
 endpoint = os.environ.get('TEST_ENDPOINT', 'ws://127.0.0.1:9944')
 password = os.environ.get('TEST_WALLET_PASSWORD', '')
 
+print(f"wallet_name: {wallet_name}")
+print(f"endpoint: {endpoint}")
+print(f"password: {'*' * len(password)}")
+
 cmd = f'btcli wallet faucet --wallet.name {wallet_name} --subtensor.chain_endpoint {endpoint}'
 child = pexpect.spawn(cmd)
 
@@ -24,4 +28,5 @@ child.expect('Run Faucet?')
 child.sendline('y')
 child.expect('Enter your password:')
 child.sendline(password)
-child.expect(pexpect.EOF)
+child.expect(pexpect.EOF, timeout=60)
+child.close()
