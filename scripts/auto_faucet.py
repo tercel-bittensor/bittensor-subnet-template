@@ -20,7 +20,7 @@ password = os.environ.get('TEST_WALLET_PASSWORD', '')
 cmd = f'btcli wallet faucet --wallet.name {wallet_name} --subtensor.chain_endpoint {endpoint}'
 child = pexpect.spawn(cmd)
 
-child.expect('Run Faucet\?')
+child.expect('Run Faucet?')
 child.sendline('y')
 child.expect('Enter your password:')
 child.sendline(password)
