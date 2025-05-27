@@ -5,4 +5,9 @@ pytest>=8
 torch>=2
 numpy>=1
 setuptools>=68
+
+# for scripts/auto_faucet.py
 pexpect
+
+# for scripts/show-metadata.py
+substrate-interface
