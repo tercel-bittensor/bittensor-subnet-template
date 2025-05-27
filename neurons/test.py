@@ -1,3 +1,7 @@
+# Test Dummy protocol interaction
+# python neurons/test.py --subtensor.network local --subtensor.chain_endpoint ws://127.0.0.1:9944
+# this is a test script to query a miner on the local chain
+
 import bittensor as bt
 from template.protocol import Dummy
 import argparse
