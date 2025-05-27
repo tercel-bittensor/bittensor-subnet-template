@@ -25,6 +25,7 @@ print(f"password: {'*' * len(password)}")
 cmd = f'btcli wallet faucet --wallet.name {wallet_name} --subtensor.chain_endpoint {endpoint}'
 child = pexpect.spawn(cmd, encoding="utf-8")
 
+# log to stdout(optional)
 child.logfile = sys.stdout
 
 child.expect('Run Faucet?')
