@@ -1,5 +1,6 @@
 import os
 import pexpect
+import sys
 
 def load_env():
     if not os.path.exists('.env'):
@@ -23,6 +24,8 @@ print(f"password: {'*' * len(password)}")
 
 cmd = f'btcli wallet faucet --wallet.name {wallet_name} --subtensor.chain_endpoint {endpoint}'
 child = pexpect.spawn(cmd)
+
+child.logfile = sys.stdout
 
 child.expect('Run Faucet?')
 child.sendline('y')
