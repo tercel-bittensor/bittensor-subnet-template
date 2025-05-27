@@ -23,7 +23,7 @@ print(f"endpoint: {endpoint}")
 print(f"password: {'*' * len(password)}")
 
 cmd = f'btcli wallet faucet --wallet.name {wallet_name} --subtensor.chain_endpoint {endpoint}'
-child = pexpect.spawn(cmd)
+child = pexpect.spawn(cmd, encoding="utf-8")
 
 child.logfile = sys.stdout
 
