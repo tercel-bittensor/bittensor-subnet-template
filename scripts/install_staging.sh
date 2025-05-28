@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Check if the current directory contains bittensor-subnet-template
+if [ ! -d "bittensor-subnet-template" ]; then
+    echo "Please run this script from the parent directory of bittensor-subnet-template."
+    echo "The bittensor-subnet-template directory is not found in the current directory."
+    exit 1
+fi
+
 # Section 1: Build/Install
 # This section is for first-time setup and installations.
 
@@ -36,10 +43,15 @@ install_dependencies() {
     fi
 
     # Install rust and cargo
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    if ! command -v rustc &> /dev/null || ! command -v cargo &> /dev/null; then
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        source "$HOME/.cargo/env"
+    fi
 
-    # Update your shell's source to include Cargo's path
-    source "$HOME/.cargo/env"
+    # Check for nightly toolchain
+    if ! rustup toolchain list | grep -q nightly; then
+        rustup install nightly
+    fi
 }
 
 # Call install_dependencies only if it's the first time running the script
