@@ -5,7 +5,7 @@ pytest>=8
 torch>=2
 numpy>=1
 setuptools>=68
-
+bittensor>=8.0.0
 # for scripts/auto_faucet.py
 pexpect
 

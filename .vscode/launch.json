@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Validator",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/neurons/validator.py",
+            "args": [
+                "--netuid", "2",
+                "--subtensor.chain_endpoint", "ws://127.0.0.1:9944",
+                "--wallet.name", "validator",
+                "--wallet.hotkey", "default",
+                "--logging.debug",
+                "--subtensor.network", "local"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": false
+        }
+    ]
+}
